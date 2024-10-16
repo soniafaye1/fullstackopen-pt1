@@ -34,7 +34,7 @@ const App2 = () => {
 
     const handleRightClick = () => {
         setAll(allClicks.concat("R"))
-        setRight(right + 1)
+        setRight(right + 1) 
     }
 
     const HandleResetClick = () => {

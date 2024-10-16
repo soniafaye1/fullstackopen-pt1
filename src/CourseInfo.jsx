@@ -33,7 +33,7 @@ const Total = (props) => {
   )
 }
 
-const App = () => {
+const CourseInfo = () => {
   const course = {
     name: 'Half Stack application development',
     parts: [
@@ -57,7 +57,6 @@ const App = () => {
 
   return (
     <div>
-
       <Header course={course}/>
       <Content course={course} />
       <Total course={course} />
@@ -65,4 +64,4 @@ const App = () => {
   )
 }
 
-export default App;
+export default CourseInfo;
