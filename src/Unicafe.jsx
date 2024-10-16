@@ -6,10 +6,39 @@ const Button = ({onClick, text}) =>{
     )
 }
 
-const Statistics = ({text, value}) => {
-    return (
-        <p>{text}: {value}</p>
+const StatisticsLine = ({text, value}) => {
+     return (
+        <tbody>
+            <tr>
+                <th>{text}</th>
+                <td>{value}</td>
+            </tr>
+
+        </tbody>
     )
+}
+
+const Statistics = ({good, bad, neutral, all, average, positive}) => {
+    if(good === 0 && bad === 0 && neutral === 0){
+        return(
+            <p>no feedback given</p>
+        )
+    }else{
+       return(
+    <div>
+        <h2> Statistics </h2>
+        <table>
+         <StatisticsLine text={"good"} value={good}/>
+         <StatisticsLine text={"neutral"} value={neutral} />
+         <StatisticsLine text={"bad"} value={bad} />
+         <StatisticsLine text={"all"} value={all} />
+         <StatisticsLine text={"average"} value={average} />
+         <StatisticsLine text={"positive"} value={positive} />
+        </table>
+    </div>
+   ) 
+    }
+   
 }
 
 const Unicafe = () => {
@@ -54,7 +83,6 @@ const Unicafe = () => {
         setAll(newAll)
 
         let sum = good - bad
-        console.log(sum)
         setAverage(sum/newAll)
 
         let pos = good/newAll
@@ -68,13 +96,7 @@ const Unicafe = () => {
          <Button onClick={handleNeutralClick} text={"neutral"} />
          <Button onClick={handleBadClick} text={"bad"}/>
 
-         <h2> Statistics </h2>
-         <Statistics text={"good"} value={good}/>
-         <Statistics text={"neutral"} value={neutral} />
-         <Statistics text={"bad"} value={bad} />
-         <Statistics text={"all"} value={all} />
-         <Statistics text={"average"} value={average} />
-         <Statistics text={"positive"} value={positive} />
+        <Statistics good={good} bad={bad} neutral={neutral} all={all} average={average} positive={positive} />
         </>
     )
 }
