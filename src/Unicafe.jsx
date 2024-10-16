@@ -6,6 +6,12 @@ const Button = ({onClick, text}) =>{
     )
 }
 
+const Statistics = ({text, value}) => {
+    return (
+        <p>{text}: {value}</p>
+    )
+}
+
 const Unicafe = () => {
     const [good, setGood] = useState(0)
     const [neutral, setNeutral] = useState(0)
@@ -26,8 +32,6 @@ const Unicafe = () => {
 
         let pos = newGood/newAll
         setPositive(pos)
-
-        console.log("good: "+newGood, "bad: "+bad, "newAll: "+newAll)
     }
 
     const handleBadClick = () => { 
@@ -41,9 +45,6 @@ const Unicafe = () => {
 
         let pos = good/newAll
         setPositive(pos)
-                
-        console.log("good: "+good, "newBad: "+newBad, "newAll: "+newAll)
-
     }
 
     const handleNeutralClick = () => { 
@@ -58,11 +59,7 @@ const Unicafe = () => {
 
         let pos = good/newAll
         setPositive(pos)
-                
-        console.log("good: "+good, "bad: "+bad, "all: "+ newAll)
     }
-
-
 
     return(
         <>
@@ -72,12 +69,12 @@ const Unicafe = () => {
          <Button onClick={handleBadClick} text={"bad"}/>
 
          <h2> Statistics </h2>
-         <p>good: {good}</p>
-         <p>neutral: {neutral}</p>
-         <p>bad: {bad}</p>
-         <p>all: {all}</p>
-         <p>average: {average}</p>
-         <p>positive: {positive}</p>
+         <Statistics text={"good"} value={good}/>
+         <Statistics text={"neutral"} value={neutral} />
+         <Statistics text={"bad"} value={bad} />
+         <Statistics text={"all"} value={all} />
+         <Statistics text={"average"} value={average} />
+         <Statistics text={"positive"} value={positive} />
         </>
     )
 }
