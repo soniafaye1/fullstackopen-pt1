@@ -11,23 +11,43 @@ const Anecdotes = () => {
     'Programming without an extremely heavy use of console.log is same as if a doctor would refuse to use x-rays or blood tests when diagnosing patients.',
     'The only way to go fast, is to go well.'
   ]
-   
+
+  let l = anecdotes.length; 
+  var arr = Array(l).fill(0);
   const [selected, setSelected] = useState(0)
-
+  const [points, setPoints] = useState(arr)
+  const [highest, setHighest] = useState(0)
+  let index = points.indexOf(highest)
+  
   const handleClick = () => {
-    let l = anecdotes.length;
     let random = Math.floor(Math.random() * l);
-
     setSelected(random);
-    console.log(random)
+  }
+
+  const handleVote = () => {
+    const copy = [...points]
+    copy[selected] += 1
+    setPoints(copy)
+
+    if(highest < copy[selected]){
+        setHighest(copy[selected])
+    }
+
   }
 
   return (
     <div>
-      {anecdotes[selected]}
-
-    <button onClick={handleClick}>next anecdote</button>
+        <h2>Anecdote of the day</h2>
+        {anecdotes[selected]}
+        <p>has {points[selected]} votes</p>
+        <button onClick={handleVote}>vote</button>
+        <button onClick={handleClick}>next anecdote</button>
+        
+        <h2>Anecdote of the day</h2>
+        {anecdotes[index]}
+        <p>has {highest} votes</p>
     </div>
+
   )
 }
 
