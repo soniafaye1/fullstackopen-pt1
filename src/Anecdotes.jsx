@@ -32,7 +32,6 @@ const Anecdotes = () => {
     if(highest < copy[selected]){
         setHighest(copy[selected])
     }
-
   }
 
   return (
